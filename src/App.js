@@ -14,7 +14,7 @@ function App() {
   }, []);
 
   return (
-    <BrowserRouter basename="/E-Commerce">
+    <BrowserRouter basename="/React_Ecommerce">
       <Routes>
         <Route exact path="/" element={<HomePage />} />
         <Route exact path="/products/category/:id" element={<ProductPage />} />
