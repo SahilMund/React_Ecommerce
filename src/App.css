@@ -1,0 +1,127 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+  scroll-behavior: smooth;
+}
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    background: #F6F6F5;
+    scroll-behavior: smooth;
+    user-select: none;
+}
+input,select{
+  outline: none;
+}
+.batch_heart{
+  background: tomato;
+  width: 15px;
+  height: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+  position: absolute;
+  right: -24%;
+  top: -9%;
+  cursor: pointer;
+}
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+
+.react-pagination-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.react-pagination-container ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.react-pagination-container li {
+  margin: 0 10px;
+  cursor: pointer;
+}
+
+.react-pagination-container li a {
+  display: block;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: #e5e5e5;
+  color: #333;
+  text-decoration: none;
+}
+
+.react-pagination-container li a:hover {
+  background-color: #333;
+  color: #fff;
+}
+
+/* .react-pagination-container li a.react-paginate-active  {
+  background-color: #333;
+  color: #fff;
+  font-weight: bold;
+} */
+
+.react-pagination-container li.active a{
+  background-color: #333;
+  color: #fff;
+  font-weight: bold;
+}
+
+
+/* LOADER */
+.app-spinner {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  border: 3px solid #9c4fd8;
+  border-radius: 50%;
+  border-top-color: #79d6b1;
+  animation: spin 1s linear infinite;
+  -webkit-animation: spin 1s linear infinite;
+  margin-right: 10px;
+  position: absolute;
+  top: 45%;
+  left: 50%;
+}
+
+@keyframes spin {
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes spin {
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+
+}
+
+
+@media screen and (max-width: 480px) {
+  .album-input {
+    width: auto;
+  }
+}
