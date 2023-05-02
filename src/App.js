@@ -19,6 +19,7 @@ function App() {
         <Route exact path="/" element={<HomePage />} />
         <Route exact path="/products/category/:id" element={<ProductPage />} />
         <Route exact path="/product/:id" element={<ProductDetailsPage />} />
+        <Route>404 Not Found!</Route>
       </Routes>
     </BrowserRouter>
   );
