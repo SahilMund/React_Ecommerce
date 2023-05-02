@@ -1,5 +1,4 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import styles from "../../styles/style";
 import { useDispatch } from 'react-redux';
 import { sortProducts } from "../../redux/actions/product";
@@ -15,7 +14,6 @@ const DropDown = ({  handleSelectedItem, setDropDown }) => {
   const dispatch = useDispatch();
 
   const submitHandle = (i) => {
-    console.log(i);
     dispatch(sortProducts(i.value));
     handleSelectedItem(i.name);
     setDropDown(false);

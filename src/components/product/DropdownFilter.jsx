@@ -54,7 +54,7 @@ function DropdownFilter({ handleFilter }) {
     const filteredOptions = filterOptions
       .filter((option) => productType.includes(option.name))
       .map((ele) => ele.value);
-      console.log(filteredOptions);
+      
     handleFilter(filteredOptions);
 
   }, [productType]);

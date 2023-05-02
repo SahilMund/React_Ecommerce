@@ -34,8 +34,7 @@ const ProductPage = () => {
 
   // Invoke when user click to request another page.
   const handlePageClick = (event) => {
-    // console.log(`User requested page number ${event} and ${even}`);
-    console.log(event);
+   
 
     const newPage = event.selected + 1;
     setCurrentPage(newPage);

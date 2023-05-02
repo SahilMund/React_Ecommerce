@@ -19,7 +19,6 @@ export const fetchProductsByCategory =
         `${SERVER_BASE_URL}/products/category/${categoryId}?limit=${limit}&page=${page}`
       );
 
-      // console.log(response,` ${SERVER_BASE_URL}/${FETCH_PRODUCTS_BY_CATEGORY}/${id}`);
       dispatch({
         type: ProductActionTypes.FETCH_PRODUCTS_BY_CATEGORY,
         payload: response.data,
@@ -43,7 +42,6 @@ export const fetchCategories = () => async (dispatch) => {
       payload: data,
     });
   } catch (error) {
-    console.log(error);
     dispatch({
       type: ProductActionTypes.REQUEST_FAILURE,
       payload: error,
@@ -59,14 +57,11 @@ export const fetchProductDetails = (id) => async (dispatch) => {
       `${SERVER_BASE_URL}/${FETCH_PRODUCTS}/${id}`
     );
 
-    console.log(data, `${SERVER_BASE_URL}/${FETCH_PRODUCTS}/${id}`);
-
     dispatch({
       type: ProductActionTypes.FETCH_PRODUCT_DETAILS,
       payload: data,
     });
   } catch (error) {
-    console.log(error);
     dispatch({
       type: ProductActionTypes.REQUEST_FAILURE,
       payload: error,
@@ -117,13 +112,11 @@ export const sortProducts = (value) => async (dispatch, getState) => {
         break;
     }
 
-    console.log("data", data);
     dispatch({
       type: ProductActionTypes.SORT_PRODUCTS,
       payload: data,
     });
   } catch (error) {
-    console.log(error);
     dispatch({
       type: ProductActionTypes.REQUEST_FAILURE,
       payload: error,
@@ -135,34 +128,12 @@ export const filterProducts =
     try {
       dispatch({
         type: ProductActionTypes.REQUEST_FILTERING_STARTED,
-        payload : products
+        payload: products,
       });
-
-      console.log(products);
 
       let data;
       switch (type) {
-        case "price":
-          const [min, max] = value;
-          data = [...products].filter((product) => {
-            if (min && max) {
-              return (
-                product.variants[0]?.price >= min &&
-                product.variants[0]?.price <= max
-              );
-            } else if (min) {
-              return product.variants[0]?.price >= min;
-            } else if (max) {
-              return product.variants[0]?.price <= max;
-            } else {
-              return true;
-            }
-          });
-
-          break;
-
         case "others":
-          console.log(value, products);
           data = [...products].filter((product) =>
             value.every((filter) => product[filter])
           );
@@ -177,13 +148,11 @@ export const filterProducts =
           break;
       }
 
-      console.log("filter data", data, type);
       dispatch({
         type: ProductActionTypes.FILTER_PRODUCTS,
         payload: { data, type },
       });
     } catch (error) {
-      console.log(error);
       dispatch({
         type: ProductActionTypes.REQUEST_FAILURE,
         payload: error,

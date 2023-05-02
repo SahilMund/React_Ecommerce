@@ -28,41 +28,40 @@ const Header = ({ activeHeading, isProductPage }) => {
 
   const { productDetails, filterType } = useSelector((state) => state.product);
 
-  const [sliderValue, setSliderValue] = useState([20, 37]);
+  // const [sliderValue, setSliderValue] = useState([20, 37]);
 
-  const handleSlider = (event, newValue, activeThumb) => {
-    const minDistance = 10;
-    if (!Array.isArray(newValue)) {
-      return;
-    }
+  // const handleSlider = (event, newValue, activeThumb) => {
+  //   const minDistance = 10;
+  //   if (!Array.isArray(newValue)) {
+  //     return;
+  //   }
 
-    // setFilter("price");
-    if (activeThumb === 0) {
-      setSliderValue([
-        Math.min(newValue[0], sliderValue[1] - minDistance),
-        sliderValue[1],
-      ]);
-    } else {
-      setSliderValue([
-        sliderValue[0],
-        Math.max(newValue[1], sliderValue[0] + minDistance),
-      ]);
-    }
+  //   // setFilter("price");
+  //   if (activeThumb === 0) {
+  //     setSliderValue([
+  //       Math.min(newValue[0], sliderValue[1] - minDistance),
+  //       sliderValue[1],
+  //     ]);
+  //   } else {
+  //     setSliderValue([
+  //       sliderValue[0],
+  //       Math.max(newValue[1], sliderValue[0] + minDistance),
+  //     ]);
+  //   }
 
-    dispatch(filterProducts("price", sliderValue, productDetails));
-  };
+  //   dispatch(filterProducts("price", sliderValue, productDetails));
+  // };
 
   useEffect(() => {
-    console.log(filter);
     filter.length !== 0 &&
       dispatch(filterProducts("others", filter, productDetails));
     filter.length === 0 &&
       dispatch(filterProducts("reset", null, productDetails));
   }, [filter, dispatch]);
 
-  const sliderValueText = () => {
-    return sliderValue;
-  };
+  // const sliderValueText = () => {
+  //   return sliderValue;
+  // };
 
   window.addEventListener("scroll", () => {
     if (window.scrollY > 70) {
@@ -88,7 +87,7 @@ const Header = ({ activeHeading, isProductPage }) => {
           <div className="w-[50%] relative">
             {isProductPage ? (
               <div className="flex items-center justify-between">
-                <Box sx={{ width: 300 }}>
+                {/* <Box sx={{ width: 300 }}>
                   <Slider
                     getAriaLabel={() => "Minimum distance"}
                     value={sliderValue}
@@ -102,7 +101,7 @@ const Header = ({ activeHeading, isProductPage }) => {
                     valueLabelDisplay="on"
                     disableSwap
                   />
-                </Box>
+                </Box> */}
                 <DropdownFilter handleFilter={setFilter} />
               </div>
             ) : (
@@ -252,7 +251,6 @@ const Header = ({ activeHeading, isProductPage }) => {
                       handleSelectedItem={setSelectedItem}
                       setDropDown={setDropDown}
                     />
-
                   </>
                 ) : null}
               </div>
@@ -262,8 +260,6 @@ const Header = ({ activeHeading, isProductPage }) => {
               <br />
               <br />
               <br />
-
-           
             </div>
           </div>
         )}
