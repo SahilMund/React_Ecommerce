@@ -4,6 +4,7 @@ import styles from "../../styles/style";
 const ProductDetailsInfo = ({ data }) => {
   const [active, setActive] = useState(1);
 
+  // destructuring required details to enable filter
   const {
     prodoExclusive,
     greenProduct,
@@ -13,6 +14,7 @@ const ProductDetailsInfo = ({ data }) => {
     ecoFriendly,
   } = data;
 
+  // creating an Info object according the above values
   const info = {
     prodoExclusive: prodoExclusive,
     greenProduct: greenProduct,
@@ -22,6 +24,7 @@ const ProductDetailsInfo = ({ data }) => {
     ecoFriendly: ecoFriendly,
   };
 
+  // Getting the Info values only for which the values true
   const infoList = Object.entries(info)
     .filter(([key, value]) => value === true)
     .map(([key, value]) => key);
@@ -80,9 +83,11 @@ const ProductDetailsInfo = ({ data }) => {
       {active === 2 ? (
         <div className="w-full justify-center min-h-[40vh] flex items-center">
           <ul>
-            {infoList.map((ele) => (
-              <p> - {ele} </p>
-            ))}
+            {infoList.length === 0 ? (
+              <p>No Data Present for this product</p>
+            ) : (
+              infoList.map((ele) => <p> - {ele} </p>)
+            )}
           </ul>
         </div>
       ) : null}

@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { AiOutlineShoppingCart } from "react-icons/ai";
-import { useSelector } from "react-redux";
 import styles from "../../styles/style";
 import ProductDetailsInfo from "./ProductDetailsInfo";
 
 const ProductDetails = ({ data }) => {
   const [select, setSelect] = useState(0);
-  const { isLoading } = useSelector((state) => state.product);
 
   return (
     <div className="bg-white">

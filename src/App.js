@@ -9,7 +9,9 @@ import "./App.css";
 
 function App() {
   const dispatch = useDispatch();
+
   useEffect(() => {
+    // dispatching an action to fetch categories details from the API
     dispatch(fetchCategories());
   }, []);
 

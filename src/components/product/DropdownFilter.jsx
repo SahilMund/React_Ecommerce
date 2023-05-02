@@ -32,6 +32,7 @@ function DropdownFilter({ handleFilter }) {
   const theme = useTheme();
   const [productType, setProductType] = useState([]);
 
+  // creating filter Options to render in the filter dropdown
   const filterOptions = [
     { id: 1, name: "Ready Product", value: "readyProduct" },
     { id: 2, name: "Made-To-Order", value: "madeToOrder" },
@@ -51,12 +52,12 @@ function DropdownFilter({ handleFilter }) {
   };
 
   useEffect(() => {
+    // Getting the values from the selected name
     const filteredOptions = filterOptions
       .filter((option) => productType.includes(option.name))
       .map((ele) => ele.value);
-      
-    handleFilter(filteredOptions);
 
+    handleFilter(filteredOptions);
   }, [productType]);
 
   return (

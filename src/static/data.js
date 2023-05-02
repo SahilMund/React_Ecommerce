@@ -28,11 +28,11 @@ export const navItems = [
   export const footerProductLinks = [
     {
       name: "About us",
-      link: "/about"
+      link: "/"
     },
     {
       name: "Careers",
-      link: "/carrers"
+      link: "/"
     },
     {
       name: "Store Locations",

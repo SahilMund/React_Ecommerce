@@ -6,8 +6,10 @@ import { Provider } from "react-redux";
 import store from "./redux/store";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
+
 root.render(
   <React.StrictMode>
+    {/* Making redux store vaailable to APP and all its child component */}
     <Provider store={store}>
       <App />
     </Provider>

@@ -1,9 +1,9 @@
 import React from "react";
 import styles from "../../styles/style";
-import { useDispatch } from 'react-redux';
+import { useDispatch } from "react-redux";
 import { sortProducts } from "../../redux/actions/product";
 
-const DropDown = ({  handleSelectedItem, setDropDown }) => {
+const DropDown = ({ handleSelectedItem, setDropDown }) => {
   const options = [
     { value: "by-date", name: "by Date" },
     { value: "price-asc", name: "Price (asc)" },
@@ -14,7 +14,9 @@ const DropDown = ({  handleSelectedItem, setDropDown }) => {
   const dispatch = useDispatch();
 
   const submitHandle = (i) => {
+    // dispatching an action to sort the products and passing the criteria to sort it
     dispatch(sortProducts(i.value));
+    // to show the selected item
     handleSelectedItem(i.name);
     setDropDown(false);
   };
@@ -27,10 +29,7 @@ const DropDown = ({  handleSelectedItem, setDropDown }) => {
             className={`${styles.flexNormal}`}
             onClick={() => submitHandle(i)}
           >
-            
             <h3 className="m-3 cursor-pointer select-none">{i.name}</h3>
-
-            
           </div>
         ))}
     </div>

@@ -15,7 +15,6 @@ export const fetchProductsByCategory =
     });
     try {
       const response = await axios.get(
-        // `${SERVER_BASE_URL}/${FETCH_PRODUCTS_BY_CATEGORY}/${id}`
         `${SERVER_BASE_URL}/products/category/${categoryId}?limit=${limit}&page=${page}`
       );
 
@@ -73,6 +72,7 @@ export const sortProducts = (value) => async (dispatch, getState) => {
   try {
     const products = getState().product.productDetails;
     let data;
+    // Sorting the products according to some criteria
     switch (value) {
       case "by-date":
         data = [...products].sort((a, b) => {
@@ -131,6 +131,7 @@ export const filterProducts =
         payload: products,
       });
 
+      // to filter the product
       let data;
       switch (type) {
         case "others":
@@ -139,6 +140,7 @@ export const filterProducts =
           );
           break;
 
+        // to reset the filteredArray state , if no item is selected in the filter dropdown
         case "reset":
           data = [];
           break;

@@ -8,6 +8,7 @@ import { fetchProductsByCategory } from "../redux/actions";
 import styles from "../styles/style";
 
 const ProductPage = () => {
+  // Getting the category Id from the query strings
   const { id } = useParams();
 
   const {
@@ -19,14 +20,17 @@ const ProductPage = () => {
     pageDetails: { totalItems, itemsPerPage },
   } = useSelector((state) => state.product);
 
-  const products = filterType && filterType !== "reset" ? filteredDetails : productDetails;
-
-  const [isFirstPage, setIsFirstPage] = useState(0);
-  const [isLastPage, setIsLastPage] = useState(0);
-
-  const [currentPage, setCurrentPage] = useState(1);
   const dispatch = useDispatch();
 
+  // choosing the filterdDetails to render if the filterType is not 'reset'
+
+  const products =
+    filterType && filterType !== "reset" ? filteredDetails : productDetails;
+
+  // To handle pagination
+  const [isFirstPage, setIsFirstPage] = useState(0);
+  const [isLastPage, setIsLastPage] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
   const [pageLimit, setPageLimit] = useState(10);
   const [totalPages, setTotalPages] = useState(
     Math.ceil(totalItems / itemsPerPage) || 5
@@ -34,8 +38,6 @@ const ProductPage = () => {
 
   // Invoke when user click to request another page.
   const handlePageClick = (event) => {
-   
-
     const newPage = event.selected + 1;
     setCurrentPage(newPage);
     setIsFirstPage(newPage === 1);
@@ -43,10 +45,9 @@ const ProductPage = () => {
   };
 
   useEffect(() => {
-    id && dispatch(fetchProductsByCategory(id, currentPage , pageLimit));
+    //  dispatching an action to fetch products by a particular category also passing the values to handle pagination
+    id && dispatch(fetchProductsByCategory(id, currentPage, pageLimit));
   }, [id, dispatch, currentPage]);
-
-
 
   return (
     <div>
@@ -55,14 +56,18 @@ const ProductPage = () => {
       <br />
       <div className={`${styles.section}`}>
         <div className="grid grid-cols-1 gap-[20px] md:grid-cols-2 md:gap-[25px] lg:grid-cols-4 lg:gap-[25px] xl:grid-cols-5 xl:gap-[30px] mb-12">
-          {
-          isLoading || isFiltering ? <Loader/> :
-          products &&
-            products.map((i, index) => (
-              <ProductCard data={i} key={index} />
-            ))}
+          {isLoading || isFiltering ? (
+            <Loader />
+          ) : (
+            products &&
+            products.map((i, index) => <ProductCard data={i} key={index} />)
+          )}
         </div>
-        { filterType !== "reset" && (!isLoading && !isFiltering) && products && products.length === 0 ? (
+        {filterType !== "reset" &&
+        !isLoading &&
+        !isFiltering &&
+        products &&
+        products.length === 0 ? (
           <h1 className="text-center w-full pb-[100px] text-[20px]">
             No products Found!
           </h1>

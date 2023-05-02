@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 import { Loader, ProductDetails } from "../components";
@@ -11,17 +11,16 @@ const ProductDetailsPage = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    // dispatch an action to fetch the product details according to the product ID
     id && dispatch(fetchProductDetails(id));
   }, [id]);
 
   const { productData, isLoading } = useSelector((state) => state.product);
 
-
-
   return (
     <div>
       <Header />
-    {isLoading ? <Loader/> :   <ProductDetails data={productData} />}
+      {isLoading ? <Loader /> : <ProductDetails data={productData} />}
       <Footer />
     </div>
   );

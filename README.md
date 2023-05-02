@@ -1,18 +1,30 @@
-# Ecommerce React app
+# E-Commerce React app
 
-## Functionality:-
+## Features:-
 
-```
+1. Retrieving data in JSON format from the API using React.js by using axios.
+2. Displaying the list of categories retrieved from the API.
+3. Using redux for state management such as loading states, error states, and
+success states.
+4. When a user clicks on a category, the products related to that category will be fetched from product API and will shown in the Products Page. Here, used the category ID obtained from the clicked category to construct the API endpoint URL.
+5. Implemented pagination in product page using 'react-paginate' library.
+6. Added sorting functionality to enable users to sort the products by various criteria, such as date,price and alphabetical order. 
+7. Added filtering functionality to enable users to filter the products by various criteria. Used redux store to implement both sorting and filtering.
+8. Added one eye icon in products page, so when a user clicks on it a modal with some addition details will be shown for that product.
+9. When someone clicks on a product,the product detail page will open which will call the product detail API with the product ID.
 
+## Technology :-
 
+- React.JS
+- Redux 
+- Axios
+- Tailwind CSS
 
-```
 
 ## Deployed URL :-
 
-```
 https://sahilmund.github.io/React_Ecommerce
-```
+
 
 ## Steps to run the project :-
 
